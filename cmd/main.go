@@ -23,7 +23,7 @@ func main() {
 		panic(err)
 	}
 	defer db.Close()
-	log.Println("database connection established")
+
 	notificationsRepo, err := repositories.NewNotificationRepository(db)
 	if err != nil {
 		panic(err)
@@ -32,6 +32,7 @@ func main() {
 	notificationHandler := handlers.NewNotificationsHandler(notificationsRepo)
 
 	r.Route("/notifications", func(r chi.Router) {
+		r.Post("/", notificationHandler.CreateNotification)
 		r.Get("/{id}", notificationHandler.GetNotificationById)
 	})
 
