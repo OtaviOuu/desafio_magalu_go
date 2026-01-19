@@ -11,5 +11,4 @@ CREATE TABLE notifications (
 -- +goose Down
 -- +goose StatementBegin
 DROP TABLE notifications;
-DROP EXTENSION IF EXISTS "uuid-ossp";
 -- +goose StatementEnd

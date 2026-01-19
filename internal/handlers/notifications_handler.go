@@ -64,7 +64,7 @@ func (h *NotificationsHandler) GetNotificationById(w http.ResponseWriter, r *htt
 
 	notification, err := getNotificationUseCase.Execute(id)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "use case erro", http.StatusInternalServerError)
 		return
 	}
 
